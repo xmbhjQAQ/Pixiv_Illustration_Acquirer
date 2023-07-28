@@ -15,8 +15,8 @@ if(Mode!='1' and Mode!='0'):
   os.system("pause")
   sys.exit()
 sum=int(input('How much you want:'))
-if(sum>=10):
- print("limited,try using smaller number then try to restart it. ps:range:[1,10)")
+if(sum>10):
+ print("limited,try using smaller number then try to restart it. ps:range:[1,10]")
  os.system("pause")
  sys.exit()
 if(Mode=='0'): 
@@ -41,12 +41,16 @@ if(Mode=='0'):
    final_url= "https://pix.xmbhjqaq.icu/" + split_link[3]
    print(final_url)
    webbrowser.open(final_url)
-   timeout_seconds = 5
+   timeout_seconds = 10
+   print('正在下载第',str(i+1),'张图片，共计',str(sum),'张图片')
    r = requests.get(final_url, headers=headers,timeout=timeout_seconds)
    path = './image/img'+str(i+1)+'.png'
    with open(path, 'wb') as f:
         f.write(r.content)
-   print('图片已保存至程序所在目录的img文件夹内，共计',str(i+1),'张图片')     
+   print('图片' , str(i+1),'已保存至程序所在目录的img文件夹内')   
+   if(i==sum-1):
+     os.system("pause")
+     sys.exit()  
 if(Mode=='1'):
   tag=input('send your tag1 plz:')
   payload={'tag1':tag}
@@ -69,9 +73,13 @@ if(Mode=='1'):
    final_url= "https://pix.xmbhjqaq.icu/" + split_link[3]
    print(final_url)
    webbrowser.open(final_url)
-   timeout_seconds = 5
+   timeout_seconds = 10
+   print('正在下载第',str(i+1),'张图片，共计',str(sum),'张图片')
    r = requests.get(final_url, headers=headers,timeout=timeout_seconds)
    path = './image/img'+str(i+1)+'.png'
    with open(path, 'wb') as f:
-        f.write(r.content)
-   print('图片已保存至程序所在目录的img文件夹内，共计',str(i+1),'张图片')
+        f.write(r.content)    
+   print('图片' , str(i+1),'已保存至程序所在目录的img文件夹内')
+   if(i==sum-1):
+     os.system("pause")
+     sys.exit()
